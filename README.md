@@ -53,11 +53,11 @@ Thank you for contributing!
 #### MIT Licence (c) 2003-2015 - David Dossot <david@dossot.net>
 
 
-==== ErrCode Addendum begins below ====
+==== ErrCode notes begins below ====
 
 Unit Testing Quick Start
 ------------------------
-To get the NUnit test working, either reconfigure the relevant properties in the `NxBRE-UnitTest.dll.config` file for your checkout directory. Initial checkout of the `NxBRE-UnitTest.dll.config` file will look like this:
+To get the included unit tests working, either reconfigure the relevant properties in the `NxBRE-UnitTest.dll.config` file for your checkout directory. Initial checkout of the `NxBRE-UnitTest.dll.config` file will look like this:
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -78,6 +78,7 @@ To get the NUnit test working, either reconfigure the relevant properties in the
 ```
 Judging by the settings in that config, you can map `Q:` to the `RuleFiles` folder (in Windows via the [`subst` / `net use`](https://superuser.com/a/644706/736459) command) as an alternative to editing the above config file. See the `Configuration` section of documentation (e.g. `NxBRE-Documentation-3_3_0.odt`) for additional info.
 
-You will probably also find that the `nunit-framework` reference is broken. To fix this add the `Nunit` NuGet package and specifically install version 2.7.0 (NUnit v3.0.0 and newer were found to be incompatible with the unit tests as they were written for v2).
+You will probably also find that the `nunit-framework` reference is broken. To fix this, add version v2.x.x (v2.7.0 was ok) of the `Nunit` NuGet package  (NUnit v3.0.0 and newer were found to be incompatible with the unit tests as they were written for v2).
 
-Also if you're using a newer version of Visual Studio (e.g. VS 2017), you'll find that VS's built-in `Test Explorer` will not be able to run the tests unless you also add the `NUnitTestAdaptor` NuGet package (v2.1.1 seems to work fine with NUnit v2.7.0). Once done, you should be able to run the unit tests from within VS.
+Also if you're using a newer version of Visual Studio (e.g. VS 2017), you'll find that VS's built-in `Test Explorer` will not be able to run the tests unless you also add the `NUnitTestAdaptor` NuGet package (v2.1.1 seems to work fine with NUnit v2.7.0). Once done, you should be able to run the unit tests from within VS. However, for me even after installing this test adaptor, VS2017 was not able to run some of the tests (e.g. `NxBRE.Test.InferenceEngine.TestEngineCoreFeaturesRuleML086.AdvancedImplicationLogicalSupport` amongst others). 
+- Tried running the tests manually using `nunit-console`, but it too only found a total of 456 tests to run (and reported that all 456 tests passed). May VS is wrong, but it says there are 678 tests in the `Test Explorer`.
